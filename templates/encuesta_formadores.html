@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Encuesta para formadores</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:40px 20px;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#182c8f,#0b1f70);
+}
+
+.container{
+    width:min(1400px,95%);
+    margin:auto;
+}
+
+.header-card{
+    background:white;
+    border-radius:25px;
+    padding:20px 40px 30px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.logo{
+    width:320px;
+    max-width:90%;
+    margin-bottom:10px;
+}
+
+.hero-title{
+    font-size:42px;
+    font-weight:700;
+    color:#1f3fb6;
+    margin-bottom:10px;
+}
+
+.hero-subtitle{
+    color:#444;
+    font-size:18px;
+}
+
+.form-card{
+    background:white;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+section{
+    background:white;
+    border:2px solid #dfe6f7;
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:30px;
+}
+h2{
+    color:#1f3fb6;
+}
+
+input[type="text"],
+select,
+textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    border:1px solid #d5dbea;
+    border-radius:10px;
+}
+
+textarea{
+    min-height:120px;
+}
+
+.escala{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+}
+.escala{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    margin:15px 0 25px;
+}
+
+.escala input[type="radio"]{
+    transform:scale(1.4);
+    accent-color:#1f3fb6;
+}
+button{
+    background:#1f3fb6;
+    color:white;
+    border:none;
+    border-radius:999px;
+    padding:16px 40px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    display:block;
+    margin:30px auto 0;
+}
+.encuesta-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#1f3fb6;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:15px auto;
+    font-size:32px;
+}
+
+button:hover{
+    background:#15308f;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header-card">
+
+<img src="{{ url_for('static', filename='logo.png') }}"
+     class="logo">
+    
+<div class="encuesta-icon">
+📋
+</div>
+
+<div class="hero-title">
+Encuesta para formadores
+</div>
+
+<div class="hero-subtitle">
+Tu opinión es fundamental para seguir mejorando la calidad de nuestros torneos.
+</div>
+
+</div>
+
+<div class="form-card">
+<form method="POST" action="/enviar">
+
+<section>
+<h2>Datos generales</h2>
+
+<label>Centro educativo</label><br>
+<input type="text" name="centro" required>
+
+<br><br>
+
+<label>Nombre del formador/a</label><br>
+<input type="text" name="formador" required>
+
+</section>
+
+<section>
+
+<h2>Formación previa</h2>
+
+<p>Calidad de la formación previa recibida</p>
+<div class="escala">
+<input type="radio" name="calidad_formacion" value="1" required>1
+<input type="radio" name="calidad_formacion" value="2">2
+<input type="radio" name="calidad_formacion" value="3">3
+<input type="radio" name="calidad_formacion" value="4">4
+<input type="radio" name="calidad_formacion" value="5">5
+</div>
+
+<p>Alineación con lo exigido en el torneo</p>
+<div class="escala">
+<input type="radio" name="alineacion" value="1" required>1
+<input type="radio" name="alineacion" value="2">2
+<input type="radio" name="alineacion" value="3">3
+<input type="radio" name="alineacion" value="4">4
+<input type="radio" name="alineacion" value="5">5
+</div>
+
+<p>Duración y formato (sesiones, materiales, modalidad)</p>
+<div class="escala">
+<input type="radio" name="duracion_formato" value="1" required>1
+<input type="radio" name="duracion_formato" value="2">2
+<input type="radio" name="duracion_formato" value="3">3
+<input type="radio" name="duracion_formato" value="4">4
+<input type="radio" name="duracion_formato" value="5">5
+</div>
+
+<p>Nivel de preparación de los alumnos al llegar al torneo</p>
+<div class="escala">
+<input type="radio" name="preparacion_alumnos" value="1" required>1
+<input type="radio" name="preparacion_alumnos" value="2">2
+<input type="radio" name="preparacion_alumnos" value="3">3
+<input type="radio" name="preparacion_alumnos" value="4">4
+<input type="radio" name="preparacion_alumnos" value="5">5
+</div>
+
+<label>¿Qué aspectos de la formación destacarías como más útiles?</label>
+<textarea name="aspectos_utiles" required></textarea>
+
+<br><br>
+
+<label>¿Qué mejorarías en futuras formaciones?</label>
+<textarea name="mejoras_formacion" required></textarea>
+
+<br><br>
+
+<label>Calendario de la formación respecto al torneo</label>
+
+<select name="calendario_formacion" required>
+<option value="">Selecciona una opción</option>
+<option>Demasiado pronto</option>
+<option>Adecuado</option>
+<option>Demasiado tarde</option>
+</select>
+
+</section>
+
+<section>
+
+<h2>Organización del torneo</h2>
+
+<p>Organización general (logística, horarios, espacios)</p>
+<div class="escala">
+<input type="radio" name="organizacion_general" value="1" required>1
+<input type="radio" name="organizacion_general" value="2">2
+<input type="radio" name="organizacion_general" value="3">3
+<input type="radio" name="organizacion_general" value="4">4
+<input type="radio" name="organizacion_general" value="5">5
+</div>
+
+<p>Comunicación previa al torneo</p>
+<div class="escala">
+<input type="radio" name="comunicacion_previa" value="1" required>1
+<input type="radio" name="comunicacion_previa" value="2">2
+<input type="radio" name="comunicacion_previa" value="3">3
+<input type="radio" name="comunicacion_previa" value="4">4
+<input type="radio" name="comunicacion_previa" value="5">5
+</div>
+
+<p>Coordinación el día del evento</p>
+<div class="escala">
+<input type="radio" name="coordinacion_evento" value="1" required>1
+<input type="radio" name="coordinacion_evento" value="2">2
+<input type="radio" name="coordinacion_evento" value="3">3
+<input type="radio" name="coordinacion_evento" value="4">4
+<input type="radio" name="coordinacion_evento" value="5">5
+</div>
+
+</section>
+
+<section>
+
+<h2>Formato y pruebas</h2>
+
+<p>Formato adecuado al nivel de los participantes</p>
+<div class="escala">
+<input type="radio" name="formato_participantes" value="1" required>1
+<input type="radio" name="formato_participantes" value="2">2
+<input type="radio" name="formato_participantes" value="3">3
+<input type="radio" name="formato_participantes" value="4">4
+<input type="radio" name="formato_participantes" value="5">5
+</div>
+
+<p>Temas/mociones propuestos</p>
+<div class="escala">
+<input type="radio" name="temas_mociones" value="1" required>1
+<input type="radio" name="temas_mociones" value="2">2
+<input type="radio" name="temas_mociones" value="3">3
+<input type="radio" name="temas_mociones" value="4">4
+<input type="radio" name="temas_mociones" value="5">5
+</div>
+
+<p>Tiempos asignados a cada intervención</p>
+<div class="escala">
+<input type="radio" name="tiempos_intervencion" value="1" required>1
+<input type="radio" name="tiempos_intervencion" value="2">2
+<input type="radio" name="tiempos_intervencion" value="3">3
+<input type="radio" name="tiempos_intervencion" value="4">4
+<input type="radio" name="tiempos_intervencion" value="5">5
+</div>
+
+</section>
+
+<section>
+
+<h2>Evaluación</h2>
+
+<p>Calidad y criterio de los jueces/adjudicadores</p>
+<div class="escala">
+<input type="radio" name="calidad_jueces" value="1" required>1
+<input type="radio" name="calidad_jueces" value="2">2
+<input type="radio" name="calidad_jueces" value="3">3
+<input type="radio" name="calidad_jueces" value="4">4
+<input type="radio" name="calidad_jueces" value="5">5
+</div>
+
+<p>Utilidad y carácter constructivo del feedback</p>
+<div class="escala">
+<input type="radio" name="feedback" value="1" required>1
+<input type="radio" name="feedback" value="2">2
+<input type="radio" name="feedback" value="3">3
+<input type="radio" name="feedback" value="4">4
+<input type="radio" name="feedback" value="5">5
+</div>
+
+<p>Transparencia de rúbricas/criterios</p>
+<div class="escala">
+<input type="radio" name="transparencia" value="1" required>1
+<input type="radio" name="transparencia" value="2">2
+<input type="radio" name="transparencia" value="3">3
+<input type="radio" name="transparencia" value="4">4
+<input type="radio" name="transparencia" value="5">5
+</div>
+
+</section>
+
+<section>
+
+<h2>Experiencia de los alumnos</h2>
+
+<p>Experiencia general del equipo (competitiva y formativa)</p>
+<div class="escala">
+<input type="radio" name="experiencia_equipo" value="1" required>1
+<input type="radio" name="experiencia_equipo" value="2">2
+<input type="radio" name="experiencia_equipo" value="3">3
+<input type="radio" name="experiencia_equipo" value="4">4
+<input type="radio" name="experiencia_equipo" value="5">5
+</div>
+
+<label>¿Notaste un impacto positivo en sus habilidades?</label>
+<textarea name="impacto_positivo" required></textarea>
+
+<br><br>
+
+<label>¿Hubo algún momento o aspecto que generara frustración?</label>
+<textarea name="frustracion" required></textarea>
+
+</section>
+
+<section>
+
+<h2>Futuro</h2>
+
+<label>¿Qué cambiarías o mejorarías para la próxima edición?</label>
+<textarea name="mejoras_futuras" required></textarea>
+
+<br><br>
+
+<label>¿Recomendarías este torneo a otros centros?</label>
+
+<select name="recomendacion" required>
+<option value="">Selecciona una opción</option>
+<option>Sí</option>
+<option>No</option>
+<option>Quizás</option>
+</select>
+
+<br><br>
+
+<label>¿Te interesaría participar en futuras propuestas?</label>
+
+<div>
+<input type="checkbox" name="interes" value="Formación profesores"> Formación de profesores<br>
+<input type="checkbox" name="interes" value="Talleres"> Talleres<br>
+<input type="checkbox" name="interes" value="Otras ediciones"> Otras ediciones del torneo<br>
+<input type="checkbox" name="interes" value="No por ahora"> No por ahora
+</div>
+
+<br><br>
+
+<label>Comentarios adicionales</label>
+<textarea name="comentarios_adicionales" required></textarea>
+
+</section>
+
+<button type="submit">
+Enviar encuesta
+</button>
+
+</form>
+</div>
+
+</div>
+
+</body>
+</html>
