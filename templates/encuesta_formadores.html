@@ -120,6 +120,40 @@ button{
     margin:15px auto;
     font-size:32px;
 }
+.rating-group{
+    display:flex;
+    gap:12px;
+    margin-top:10px;
+    margin-bottom:25px;
+}
+
+.rating-group input{
+    display:none;
+}
+
+.rating-group label{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:2px solid #d7dff8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-weight:700;
+    background:white;
+    transition:.2s;
+}
+
+.rating-group label:hover{
+    border-color:#1f3fb6;
+}
+
+.rating-group input:checked + label{
+    background:#1f3fb6;
+    color:white;
+    border-color:#1f3fb6;
+}
 
 button:hover{
     background:#15308f;
